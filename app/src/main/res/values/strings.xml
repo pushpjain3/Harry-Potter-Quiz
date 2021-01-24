@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Harry Potter Quiz</string>
+    <string name="question_1">Who gave Ginny Weasley the diary of Tom Riddle?</string>
+    <string name="question_2">Which one of these is NOT one of Dumbeldore\'s names?</string>
+    <string name="question_3">Whose motorcycle did Hagrid use to get baby Harry to the Dursley\'s?</string>
+    <string name="question_4">Whisch of these is NOT a word for a spell?</string>
+    <string name="question_5">How many people have ever survived the Avada Kedavara curse?</string>
+    <string name="question_1_option_A">Severus Snape</string>
+    <string name="question_1_option_B">Lucious Malfoy</string>
+    <string name="question_1_option_C"> Fred Weasley</string>
+    <string name="question_2_option_A">Wolfstrick</string>
+    <string name="question_2_option_B">Brian</string>
+    <string name="question_2_option_C">Perceival</string>
+    <string name="question_3_option_A">Arthur Weasley</string>
+    <string name="question_3_option_B">Sirius Black</string>
+    <string name="question_3_option_C">He didn\'t borrow it, it was his own</string>
+    <string name="question_4_option_A">Pentimento</string>
+    <string name="question_4_option_B">Aquamenti</string>
+    <string name="question_4_option_C">Evanesce</string>
+    <string name="question_5_option_A">0</string>
+    <string name="question_5_option_B">3</string>
+    <string name="question_5_option_C">1</string>
+
+
+</resources>
