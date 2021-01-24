@@ -54,4 +54,6 @@ class MainActivity : AppCompatActivity(), ItemAdapter.OnItemClickListener {
         Toast.makeText(this,"onLongClick ${position+1}", Toast.LENGTH_LONG).show()
     }
 
+
+
 }
