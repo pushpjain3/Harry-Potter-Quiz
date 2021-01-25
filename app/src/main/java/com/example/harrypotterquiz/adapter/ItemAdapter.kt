@@ -23,11 +23,13 @@ class ItemAdapter (
         val radioButton2: RadioButton = view.findViewById(R.id.item_option_2)
         val radioButton3: RadioButton = view.findViewById(R.id.item_option_3)
 
-        init{
-            view.setOnClickListener {
-                onItemClickListener.onClick(adapterPosition)
-            }
-        }
+//        init{
+//            radioButton1.setOnClickListener {
+//                if(radioButton1.isChecked){
+//                onItemClickListener.onClick(adapterPosition, )
+//                }
+//            }
+//        }
 
     }
 
@@ -51,6 +53,8 @@ class ItemAdapter (
                 holder.radioButton2.isChecked = false
                 holder.radioButton3.isChecked = false
 //                MainActivity.MARKED_OPTIONS[position] = item.option1ResourceId
+                onItemClickListener.onClick(position, item.option1ResourceId)
+
             }
 
         }
@@ -59,6 +63,7 @@ class ItemAdapter (
             holder.radioButton1.isChecked = false
             holder.radioButton3.isChecked = false
 //            MainActivity.MARKED_OPTIONS[position] = item.option2ResourceId
+                onItemClickListener.onClick(position, item.option2ResourceId)
         }
         }
        holder.radioButton3.setOnClickListener {
@@ -66,6 +71,7 @@ class ItemAdapter (
            holder.radioButton1.isChecked = false
            holder.radioButton2.isChecked= false
 //           MainActivity.MARKED_OPTIONS[position] = item.option3ResourceId
+               onItemClickListener.onClick(position, item.option3ResourceId)
        }  }
 
     }
@@ -73,7 +79,7 @@ class ItemAdapter (
     override fun getItemCount() = dataset.size
 
     interface OnItemClickListener {
-        fun onClick(position: Int)
+        fun onClick(position: Int, resourceId: Int)
         fun onLongClick(position: Int)
 
     }

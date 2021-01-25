@@ -12,7 +12,12 @@ import com.example.harrypotterquiz.data.Datasource
 class MainActivity : AppCompatActivity(), ItemAdapter.OnItemClickListener {
     companion object{
 
-        val MARKED_OPTIONS = mutableListOf<Int>()
+        val answers = listOf(R.string.question_1_option_B,
+                R.string.question_2_option_A,
+                R.string.question_3_option_B,
+                R.string.question_4_option_A,
+                R.string.question_5_option_C)
+        val scoreList = mutableListOf<Int>()
 
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,19 +40,25 @@ class MainActivity : AppCompatActivity(), ItemAdapter.OnItemClickListener {
     private fun loadResult() {
 
 //        val answers = listOf(R.string.question_1_option_B, R.string.question_2_option_A, R.string.question_3_option_B, R.string.question_4_option_A, R.string.question_5_option_C)
-
-
-
-
+        var score = 0
+        for (value in scoreList){
+            score += value
+        }
         val intent = Intent(this, QuizResultActivity::class.java)
-
+        intent.putExtra(QuizResultActivity.SCORE_EXTRA, score.toString())
         startActivity(intent)
 
 
     }
 
-    override fun onClick(position: Int) {
-        Toast.makeText(this,"Question ${position+1}", Toast.LENGTH_LONG).show()
+    override fun onClick(position: Int, resourceId: Int) {
+        if(resourceId == answers[position] ){
+            scoreList[position] = 1
+        }else
+        {
+            scoreList[position] = 0
+        }
+
     }
 
     override fun onLongClick(position: Int) {
