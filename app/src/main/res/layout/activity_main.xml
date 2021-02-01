@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_option1"
     tools:context=".MainActivity">
 
 
@@ -20,7 +21,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="6dp"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+
         android:text="Submit"
+        android:textColor="#f0f0a0"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
 

@@ -6,40 +6,41 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.harrypotterquiz.OnCheckedChangeListener
 import com.example.harrypotterquiz.R
 import com.example.harrypotterquiz.model.Question
 
+
+
 class ItemAdapter (
-    private val context: Context,
-    private val dataset: List<Question>,
-    private val onItemClickListener: OnItemClickListener
+        private val context: Context,
+        private val dataset: List<Question>,
+        private val onCheckedChangeListener: OnCheckedChangeListener
 ): RecyclerView.Adapter<ItemAdapter.ImageViewHolder>(){
-    class ImageViewHolder(private val view: View, onItemClickListener: OnItemClickListener ): RecyclerView.ViewHolder(view){
+    class ImageViewHolder(private val view: View, onCheckedChangeListener: OnCheckedChangeListener): RecyclerView.ViewHolder(view){
         val textView: TextView = view.findViewById(R.id.item_question)
         val imageView: ImageView = view.findViewById(R.id.item_image)
         val radioButton1: RadioButton = view.findViewById(R.id.item_option_1)
         val radioButton2: RadioButton = view.findViewById(R.id.item_option_2)
         val radioButton3: RadioButton = view.findViewById(R.id.item_option_3)
+        val radioGroupMain: RadioGroup = view.findViewById(R.id.item_options)
 
-//        init{
-//            radioButton1.setOnClickListener {
-//                if(radioButton1.isChecked){
-//                onItemClickListener.onClick(adapterPosition, )
-//                }
-//            }
-//        }
+
+
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemAdapter.ImageViewHolder {
         val adapterLayout = LayoutInflater.from(parent.context)
-            .inflate(R.layout.list_item, parent, false)
-        return ImageViewHolder(adapterLayout, onItemClickListener)
+                .inflate(R.layout.list_item, parent, false)
+
+        return ItemAdapter.ImageViewHolder(adapterLayout, onCheckedChangeListener)
     }
 
-    override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ItemAdapter.ImageViewHolder, position: Int) {
         val item = dataset[position]
         holder.textView.text = context.resources.getString(item.stringResourceId)
         holder.imageView.setImageResource(item.imageResourceId)
@@ -48,41 +49,18 @@ class ItemAdapter (
         holder.radioButton3.text = context.resources.getString(item.option3ResourceId)
 
 
-        holder.radioButton1.setOnClickListener {
-            if(holder.radioButton1.isChecked) {
-                holder.radioButton2.isChecked = false
-                holder.radioButton3.isChecked = false
-//                MainActivity.MARKED_OPTIONS[position] = item.option1ResourceId
-                onItemClickListener.onClick(position, item.option1ResourceId)
 
-            }
+        holder.radioGroupMain.setOnCheckedChangeListener(
+                RadioGroup.OnCheckedChangeListener { group, checkedId ->
 
-        }
-        holder.radioButton2.setOnClickListener {
-            if(holder.radioButton2.isChecked){
-            holder.radioButton1.isChecked = false
-            holder.radioButton3.isChecked = false
-//            MainActivity.MARKED_OPTIONS[position] = item.option2ResourceId
-                onItemClickListener.onClick(position, item.option2ResourceId)
-        }
-        }
-       holder.radioButton3.setOnClickListener {
-           if(holder.radioButton3.isChecked){
-           holder.radioButton1.isChecked = false
-           holder.radioButton2.isChecked= false
-//           MainActivity.MARKED_OPTIONS[position] = item.option3ResourceId
-               onItemClickListener.onClick(position, item.option3ResourceId)
-       }  }
-
+                    onCheckedChangeListener.onCheckedChanged(position, checkedId)
+                    holder.radioButton1.isEnabled= false
+                    holder.radioButton2.isEnabled= false
+                    holder.radioButton3.isEnabled= false
+                })
     }
 
     override fun getItemCount() = dataset.size
-
-    interface OnItemClickListener {
-        fun onClick(position: Int, resourceId: Int)
-        fun onLongClick(position: Int)
-
-    }
 
 
 }

@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="8dp">
+    app:cardBackgroundColor="#f4f4f9"
+    android:layout_margin="14dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -28,14 +29,19 @@
 
         <TextView
             android:id="@+id/item_question"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="5dp"
+            android:padding="5dp"
+            android:textAlignment="viewStart"
             android:textAppearance="?attr/textAppearanceHeadline6"
+
+            android:textColor="#323232"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/item_icon"
             app:layout_constraintTop_toBottomOf="@id/item_image"
-            tools:text="Helo! This is a Question" />
+            tools:text="Hello! This is a Question" />
 
         <ImageView
             android:id="@+id/item_icon"
@@ -44,28 +50,49 @@
             android:src="@drawable/ic_mark"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/item_question"
+            app:layout_constraintTop_toBottomOf="@id/item_image"
             app:layout_constraintBottom_toBottomOf="@id/item_question"/>
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?attr/textAppearanceHeadline6"
-        app:layout_constraintTop_toBottomOf="@id/item_question"
-        app:layout_constraintStart_toStartOf="@id/item_question"
-        >
-            <RadioButton android:id="@+id/item_option_1"
-                android:layout_width="wrap_content"
-                android:textAppearance="?attr/textAppearanceHeadline6"
-                android:layout_height="wrap_content"/>
-            <RadioButton android:id="@+id/item_option_2"
-                android:layout_width="wrap_content"
-                android:textAppearance="?attr/textAppearanceHeadline6"
-                android:layout_height="wrap_content"/>
-            <RadioButton android:id="@+id/item_option_3"
-                android:layout_width="wrap_content"
-                android:textAppearance="?attr/textAppearanceHeadline6"
-                android:layout_height="wrap_content"/>
 
-    </RadioGroup>
+        <RadioGroup
+            android:id="@+id/item_options"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:textAlignment="viewStart"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toStartOf="@id/item_question"
+
+            app:layout_constraintTop_toBottomOf="@id/item_question">
+
+            <RadioButton
+                android:id="@+id/item_option_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="#000000"
+                android:buttonTint="#750808"/>
+
+            <RadioButton
+                android:id="@+id/item_option_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="#750808"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="#000000" />
+
+            <RadioButton
+                android:id="@+id/item_option_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:buttonTint="#750808"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="#000000" />
+
+        </RadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -5,7 +5,7 @@ import com.example.harrypotterquiz.model.Question
 
 class Datasource {
     fun loadQuestions(): List<Question>{
-        return listOf<Question>(
+        return listOf(
             Question(R.string.question_1, R.drawable.image_question_1, R.string.question_1_option_A, R.string.question_1_option_B, R.string.question_1_option_C),
             Question(R.string.question_2, R.drawable.image_question_2, R.string.question_2_option_A, R.string.question_2_option_B, R.string.question_2_option_C),
             Question(R.string.question_3, R.drawable.image_question_3, R.string.question_3_option_A, R.string.question_3_option_B, R.string.question_3_option_C),
